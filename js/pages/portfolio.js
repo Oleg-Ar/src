@@ -1,12 +1,41 @@
-const grid = document.getElementById('gallery');
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightbox-img');
+// ─── Scroll Progress Bar ──────────────────────────────────────────────────────
 
-if (!grid || !lightbox || !lightboxImg) {
-  console.error(
-    'One of these elements was not found: gallery, lightbox, or lightbox-img.'
-  );
-} else {
+function initScrollBar() {
+  const bar = document.getElementById('scrollBar');
+  if (!bar) return;
+
+  let ticking = false;
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        const scrollTop = window.scrollY;
+        const height =
+          document.documentElement.scrollHeight - window.innerHeight;
+        const progress = scrollTop / height;
+
+        bar.style.transform = `scaleX(${progress})`;
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+}
+
+// ─── Gallery & Lightbox ───────────────────────────────────────────────────────
+
+function initGallery() {
+  const grid = document.getElementById('gallery');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+
+  if (!grid || !lightbox || !lightboxImg) {
+    console.error(
+      'One of these elements was not found: gallery, lightbox, or lightbox-img.'
+    );
+    return;
+  }
+
   fetch('data/images.json')
     .then((response) => response.json())
     .then((images) => {
@@ -66,3 +95,9 @@ if (!grid || !lightbox || !lightboxImg) {
     }
   });
 }
+// ─── Init ─────────────────────────────────────────────────────────────────────
+
+document.addEventListener('DOMContentLoaded', () => {
+  initScrollBar();
+  initGallery();
+});

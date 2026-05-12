@@ -5,6 +5,44 @@
 //   import('../partials/footer.html?raw');
 // }
 
+// ─── Navbar ───────────────────────────────────────────────────────────────────
+
+function initNavbar() {
+  const toggle = document.querySelector('.nav-toggle');
+  const menu = document.querySelector('.nav-menu');
+
+  // Safety check:
+  // If header hasn't loaded or elements don't exist, stop here
+  if (!toggle || !menu) return;
+
+  // Mobile menu toggle
+  toggle.addEventListener('click', () => {
+    const isOpened = toggle.getAttribute('aria-expanded');
+    if (isOpened === 'false') {
+      toggle.setAttribute('aria-expanded', 'true');
+    } else {
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+    menu.classList.toggle('active');
+  });
+}
+
+// Highlights the current page link in the navbar
+function setActiveNavLink() {
+  const links = document.querySelectorAll('.nav-menu a');
+
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+
+  links.forEach((link) => {
+    if (link.getAttribute('href') === currentPage) {
+      link.parentElement?.classList.add('active');
+    }
+  });
+}
+
+
+// ─── Partials ─────────────────────────────────────────────────────────────────
+
 /**
  * @param {string} id
  * @param {string} url
@@ -32,8 +70,12 @@ async function init() {
     loadHTML('header', 'partials/header.html'),
     loadHTML('footer', 'partials/footer.html')
   ]);
+  
+  // 2. Init navbar after header is injected
+  initNavbar();
+  setActiveNavLink();
 
-  // 2. Only then touch the DOM
+  // 3. Only then touch the DOM
   const loader = document.getElementById('page-loader');
   const content = document.querySelector('.content');
   const videoWrapper = document.querySelector('.logo-video');

@@ -1,0 +1,192 @@
+/* ============================================ */
+/* ================= 1- RESET ================== */
+/* ============================================ */
+
+/**
+  Box model normalisation
+ */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  min-width: 0; /* Fixes overflows in flex/grid containers */
+}
+
+/**
+  Remove default left padding from list tags that have a class attribute
+ */
+:where(ul, ol):where([class]) {
+  padding-left: 0;
+}
+
+/**
+  Remove default margins from body and specific tags that have a class attribute
+ */
+body,
+:where(blockquote, figure, fieldset):where([class]) {
+  margin: 0;
+}
+
+/**
+  Remove vertical margins from common text tags that have a class attribute
+ */
+:where(h1, h2, h3, h4, h5, h6, p, ul, ol, dl):where([class]) {
+  margin-block: 0;
+}
+
+:where(dd[class]) {
+  margin-left: 0;
+}
+
+:where(fieldset[class]) {
+  padding: 0;
+  border: none;
+}
+
+/**
+  Remove default list markers from unordered lists with a class attribute
+ */
+:where(ul[class]) {
+  list-style: none;
+}
+
+:where(address[class]) {
+  font-style: normal;
+}
+
+/**
+  Reset vertical margins for paragraphs and handle long words
+ */
+p {
+  margin-block: 0;
+}
+
+p,
+li {
+  overflow-wrap: break-word;
+}
+
+/**
+  Default bottom margin for standard paragraphs (without classes) 
+  that are not the last child
+ */
+p:where(:not([class]):not(:last-child)) {
+  margin-bottom: 1.5rem;
+}
+
+/**
+  Media element resets for easier styling
+ */
+img,
+video,
+canvas,
+iframe {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/**
+  Inherit font properties for form elements
+ */
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+html {
+  /**
+    Full height ensures the footer can be pinned to the bottom 
+    of the viewport if needed
+   */
+  height: 100%;
+  line-height: 1.5;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+body {
+  /**
+    Ensure body spans the full viewport height for sticky footer layouts
+   */
+  min-height: 100svh;
+}
+
+/**
+  Normalise link height for better DevTools inspection
+ */
+a:where([class]) {
+  display: inline-flex;
+}
+
+/**
+  Pointer cursor for interactive elements
+ */
+button,
+label {
+  cursor: pointer;
+}
+
+/**
+  Reset button styles and remove grey tap highlight on mobile (iOS/Android)
+ */
+button {
+  background: none;
+  border: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/**
+  Unify SVG fill colours, excluding those with 'none' or URL values
+ */
+:where([fill]:not([fill="none"], [fill^="url"])) {
+  fill: currentColor;
+}
+
+/**
+  Unify SVG stroke colours, excluding those with 'none' or URL values
+ */
+:where([stroke]:not([stroke="none"], [stroke^="url"])) {
+  stroke: currentColor;
+}
+
+/**
+  Fix colour transition delays on SVG child elements
+ */
+.animated-svg * {
+    transition: fill 0.3s ease, stroke 0.3s ease;
+}
+
+/**
+  Classic table border collapse
+ */
+:where(table) {
+  border-collapse: collapse;
+  border-color: currentColor;
+}
+
+:where([hidden]) {
+  display: none;
+}
+
+/**
+  Remove all animations and transitions for users 
+  who prefer reduced motion
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

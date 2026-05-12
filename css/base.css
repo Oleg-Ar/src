@@ -1,0 +1,176 @@
+/* ============================================ */
+/* ================ BASE STYLES =============== */
+/* ============================================ */
+
+/* --- BODY --- */
+body {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+
+  /* Enables automatic optical sizing based on font size */
+  font-optical-sizing: auto;
+  /* Standard font rendering improvements */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  min-height: 100svh;
+  color: var(--color-text-main);
+  background-color: var(--color-bg-primary);
+  /* Smooth transition for theme switching or resizing */
+  transition:
+    color var(--transition-base),
+    background-color var(--transition-base);
+}
+
+/* --- TYPOGRAPHY --- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-family-title);
+  font-weight: var(--heading-font-weight);
+  line-height: var(--heading-line-height);
+  /* Optional: slightly compress headers using the width axis */
+  font-stretch: 90%;
+  letter-spacing: var(--heading-letter-spacing);
+  text-wrap: balance;
+  color: var(--color-text-title);
+  /* Redundant safety, margins already handled in reset.css */
+  margin: 0;
+  transition: var(--transition-base);
+}
+
+h1 {
+  font-size: var(--step-5);
+}
+
+h2 {
+  font-size: var(--step-4);
+}
+
+h3 {
+  font-size: var(--step-3);
+}
+
+h4 {
+  font-size: var(--step-2);
+}
+
+h5 {
+  font-size: var(--step-1);
+}
+
+h6 {
+  font-size: var(--step-0);
+  font-variation-settings: 'wght' 800;
+}
+
+/* --- PARAGRAPHS --- */
+p {
+  color: var(--color-text-main);
+  margin: 0;
+  /* Redundant reset */
+  overflow-wrap: break-word;
+}
+
+p:where(:not([class]):not(:last-child)) {
+  margin-bottom: var(--spacing-6);
+}
+
+/* --- LINKS --- */
+a:not([class]) {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+a:not([class]):hover {
+  text-decoration: none;
+}
+
+/* --- LISTS --- */
+ul:not([class]),
+ol:not([class]) {
+  padding-left: 1.5em;
+}
+
+/* --- BUTTONS --- */
+button {
+  border-radius: var(--radius-md);
+  font: inherit;
+  padding: 0.5em 1em;
+  cursor: pointer;
+}
+
+/* --- FORMS --- */
+input,
+textarea,
+select {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 0.5em 0.75em;
+  font: inherit;
+  color: var(--color-text-main);
+  background-color: var(--color-bg-surface);
+  caret-color: var(--color-accent);
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  /* Subtle glow using accent HS values */
+  box-shadow: 0 0 0 4px var(--color-accent-focus);
+}
+
+textarea {
+  resize: none;
+}
+
+/* --- PLACEHOLDER --- */
+::placeholder {
+  color: var(--color-text-muted);
+  opacity: 1;
+}
+
+/* --- TABLES --- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 0.5em;
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* --- FOCUS & ACCESSIBILITY --- */
+a:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+}
+
+::selection {
+  background-color: var(--color-accent);
+  color: #000;
+}
+
+/* ================ Buttons & Interactivity ================ */
+/* Minimum touch target size for mobile devices */
+@media (max-width: 768px) {
+  button,
+  a:where([class]),
+  label {
+    min-width: 44px;
+    min-height: 44px;
+  }
+}

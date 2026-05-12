@@ -1,0 +1,39 @@
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+}
+
+main {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+
+#header,
+#footer {
+  flex-shrink: 0;
+  /* Footer will not shrink */
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: var(--gutter);
+  gap: var(--gutter-half);
+  padding: var(--gutter);
+  width: 100%;
+  max-width: 800px;
+}
+.title {
+  margin-inline: auto;
+}
+.intro {
+  margin-bottom: 30px;
+}
+
+ul {
+  margin-top: 0;
+}

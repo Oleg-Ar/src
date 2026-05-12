@@ -1,0 +1,85 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100svh;
+}
+
+main {
+    flex-grow: 1;
+}
+
+#header,
+#footer {
+    flex-shrink: 0;
+   /* Footer will not shrink */
+}
+
+form {
+    max-width: 700px;
+    margin: var(--gutter) auto;
+    padding-inline: var(--spacing-6);
+    flex-direction: column;
+    gap: var(--spacing-4);
+}
+
+h1 {
+    align-self: center;
+}
+
+textarea {
+    overflow: hidden;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2);
+   /* Space between label and input field */
+}
+
+.ne-area {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gutter);
+    margin-bottom: var(--spacing-1);
+}
+
+@media (min-width: 768px) {
+    .ne-area {
+        flex-direction: row;
+        /* Name and email in a single line */
+    }
+
+    .ne-area>* {
+        flex: 1;
+        /* Equal width for both fields */
+    }
+}
+
+.submit-btn {
+    margin-top: var(--radius-lg);
+    background-color: var(--color-bg-secondary);
+    color: var(--color-bg-primary);
+    transition: var(--transition-base);
+    max-width: 150px;
+    width: fit-content;
+    align-self: center;
+}
+
+.submit-btn:hover {
+    background-color: var(--color-bg-secondary-hover);
+}
+
+.submit-btn:active {
+    background-color: var(--color-bg-secondary-active);
+}
+
+#contact-form {
+    display: flex;
+}
+
+#success-message {
+    display: none;
+    text-align: center;
+    margin-top: var(--spacing-section-lg);
+}

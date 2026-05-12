@@ -1,0 +1,235 @@
+/* ============================================ */
+/* =================2- TOKENS =================== */
+/* ============================================ */
+
+@font-face {
+  font-family: 'Playfair Display Variable';
+  src: url('/assets/fonts/PlayfairDisplay-Variable.woff2') format('woff2');
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito Sans Variable';
+  src: url('/assets/fonts/NunitoSans-Variable.woff2') format('woff2');
+  font-weight: 200 1000;
+  font-stretch: 75% 125%;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* ============================================ */
+  /* =============== COLOURS ====================== */
+  /* ============================================ */
+
+  /* Base colours */
+  /* #F7F7FA */
+  --color-bg-primary-hs: 240 23%;
+  --color-bg-primary-l: 97%;
+  --color-bg-primary-l-num: 97;
+
+  /*#4b619b*/
+  --color-bg-secondary-hs: 223 35%;
+  --color-bg-secondary-l: 45%;
+
+  /*#D6D87A*/
+  --color-accent-hs: 80 60%;
+  --color-accent-l: 35%;
+
+  /* Final colours*/
+  /* 60% x 30% x 10% */
+  --color-bg-primary: hsl(var(--color-bg-primary-hs) var(--color-bg-primary-l));
+  --color-bg-secondary: hsl(
+    var(--color-bg-secondary-hs) var(--color-bg-secondary-l)
+  );
+  --color-accent: hsl(var(--color-accent-hs) var(--color-accent-l));
+
+  /* Surface/Cards */
+  --color-bg-surface: hsl(
+    var(--color-bg-primary-hs) calc(var(--color-bg-primary-l) - 5%)
+  );
+
+  /* Interactive */
+  --color-accent-hover: hsl(
+    var(--color-accent-hs) calc(var(--color-accent-l) - 5%)
+  );
+  --color-accent-active: hsl(
+    var(--color-accent-hs) calc(var(--color-accent-l) - 10%)
+  );
+  --color-accent-focus: hsl(
+    var(--color-accent-hs) var(--color-accent-l) / 0.25
+  );
+
+  --color-bg-secondary-hover: hsl(
+    var(--color-bg-secondary-hs) calc(var(--color-bg-secondary-l) - 5%)
+  );
+  --color-bg-secondary-active: hsl(
+    var(--color-bg-secondary-hs) calc(var(--color-bg-secondary-l) - 10%)
+  );
+
+  /* Typography */
+  --color-text-main: hsl(0, 0%, 17%);
+  --color-text-muted: hsl(0 0% 55%);
+  --color-text-title: var(--color-bg-secondary);
+  --color-text-on-dark: hsl(
+    0 0% clamp(92, calc((var(--color-bg-primary-l-num) - 50) * -1), 98)
+  );
+
+  /* Borders & Dividers */
+  --color-border: hsl(
+    var(--color-bg-secondary-hs) var(--color-bg-secondary-l) / 0.15
+  );
+
+  /* --- Status Colours --- */
+  --color-success: hsl(120, 39%, 49%);
+  --color-warning: hsl(36, 100%, 50%);
+  --color-error: hsl(4, 90%, 58%);
+  --color-info: hsl(207, 90%, 54%);
+
+  /* ============================================ */
+  /* =============== TYPOGRAPHY ================== */
+  /* ============================================ */
+
+  --type-scale: 1.2;
+  /* Fluid ratio (1.15 on mobile, 1.25 on desktop) */
+  --step-0: clamp(1rem, 0.738rem + 0.55vw, 1.25rem);
+   /* Auto-calculation of all steps */
+  --step-1: calc(var(--step-0) * var(--type-scale));
+  --step-2: calc(var(--step-1) * var(--type-scale));
+  --step-3: calc(var(--step-2) * var(--type-scale));
+  --step-4: calc(var(--step-3) * var(--type-scale));
+  --step-5: calc(var(--step-4) * var(--type-scale));
+
+  --font-family-title: 'Playfair Display Variable', Georgia, 'Times New Roman', serif;
+  --font-family-base:  'Nunito Sans Variable', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  --font-size-base: var(--step-0);
+
+  --line-height-base: 1.5;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  --heading-font-weight: 700;
+  --heading-line-height: 1.2;
+  --heading-letter-spacing: 0.02em;
+}
+
+@media (max-width: 768px) {
+  :root {
+    /* Decrease the ratio only. 
+       All steps (1-5) will recalculate automatically! */
+    --type-scale: 1.15;
+  }
+}
+
+:root {
+  /* ============================================ */
+  /* =============== SPACING ===================== */
+  /* ============================================ */
+
+  --gutter: clamp(1rem, 5vw, 3rem);
+  --gutter-half: calc(var(--gutter)/2);
+  --spacing-section: calc(var(--gutter) * 2);
+  --spacing-section-lg: calc(var(--gutter) * 3);
+
+  --spacing-1: 0.25rem;
+  /* 4px  */
+  --spacing-2: 0.5rem;
+  /* 8px  */
+  --spacing-3: 0.75rem;
+  /* 12px */
+  --spacing-4: 1rem;
+  /* 16px (Base) */
+
+  --spacing-6: 1.5rem;
+  /* 24px */
+  --spacing-8: 2rem;
+  /* 32px */
+
+  --spacing-10: 2.5rem;
+  /* 40px */
+  --spacing-12: 3rem;
+  /* 48px */
+  --spacing-16: 4rem;
+  /* 64px */
+  --spacing-20: 5rem;
+  /* 80px */
+  --spacing-24: 6rem;
+  /* 96px */
+  --spacing-32: 8rem;
+  /* 128px */
+
+  /* ============================================ */
+  /* =============== RADIUS ====================== */
+  /* ============================================ */
+
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+
+  /* ============================================ */
+  /* =============== SHADOWS ===================== */
+  /* ============================================ */
+
+  /* --- Shadow Color ---*/
+  --shadow-color: 0 0% 0%;
+
+  --shadow-alpha: clamp(
+    0.18,
+    calc((100 - var(--color-bg-primary-l-num)) / 60),
+    0.32
+  );
+  --shadow-secondary-ratio: 0.6;
+
+  --shadow-sm:
+    0 1px 2px hsl(var(--shadow-color) / calc(var(--shadow-alpha) * 0.7)),
+    0 1px 1px
+      hsl(
+        var(--shadow-color) /
+          calc(var(--shadow-alpha) * 0.7 * var(--shadow-secondary-ratio))
+      );
+
+  --shadow-md:
+    0 4px 6px hsl(var(--shadow-color) / var(--shadow-alpha)),
+    0 2px 4px
+      hsl(
+        var(--shadow-color) /
+          calc(var(--shadow-alpha) * var(--shadow-secondary-ratio))
+      );
+
+  --shadow-lg:
+    0 10px 15px hsl(var(--shadow-color) / calc(var(--shadow-alpha) * 1.2)),
+    0 4px 6px
+      hsl(
+        var(--shadow-color) /
+          calc(var(--shadow-alpha) * 1.2 * var(--shadow-secondary-ratio))
+      );
+  /* ============================================ */
+  /* =============== MOTION ====================== */
+  /* ============================================ */
+
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.3s ease;
+  --transition-slow: 0.5s ease;
+  --slide-motion: 1s;  
+
+  /* ============================================ */
+  /* =============== BREAKPOINTS ================= */
+  /* ============================================ */
+
+  /* --- 5. Breakpoints (Mobile First logic) --- */
+  --bp-xs: 320px;
+  /* Small phones */
+  --bp-sm: 576px;
+  /* Phones */
+  --bp-md: 768px;
+  /* Tablets */
+  --bp-lg: 992px;
+  /* Laptops / Small Desktops */
+  --bp-xl: 1200px;
+  /* Standard Desktops */
+  --bp-xxl: 1600px;
+  /* Large Screens */
+}

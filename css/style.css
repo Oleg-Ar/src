@@ -1,0 +1,156 @@
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+}
+
+main {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+
+  background-image: url('../assets/images/Flower_1.svg');
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  background-size: 50%;
+  opacity: 0; 
+  transition:
+    background-position 1.5s ease-out,
+    opacity 1.5s ease-in;
+}
+
+main.animate {
+  opacity: 1;
+  background-position: right var(--gutter-half) bottom var(--gutter-half);
+}
+
+#header,
+#footer {
+  flex-shrink: 0;
+  /* Footer will not shrink */
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: var(--gutter-half);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-block: var(--gutter);
+  gap: var(--gutter);
+}
+
+.logo-video {
+  padding-inline: var(--gutter);
+  opacity: 0;
+  transform: translateX(-100vw);
+  display: flex;
+  justify-content: center;
+  
+}
+
+.logo-video video {
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+}
+
+.content {
+  text-align: justify;
+  padding-inline: var(--gutter);
+  opacity: 0;
+  transform: translateX(100vw);
+}
+
+.animate {
+  animation: slideLR var(--slide-motion) ease-out forwards;
+}
+
+/* ----------loading page----------- */
+.cls-2 {
+  fill: transparent;
+  stroke: #414042;
+  stroke-width: 1;
+
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+
+  animation:
+    draw 1.5s ease-in-out forwards,
+    fill 1.5s ease-in-out forwards 1.2s;
+}
+
+.logo-svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.bg-loader {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg-primary);
+}
+
+#page-loader {
+  z-index: 999;
+  transition:
+    opacity 0.75s ease,
+    visibility 0.75s;
+  user-select: none;
+}
+
+#page-loader.hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fill {
+  to {
+    fill: #231f20;
+  }
+}
+
+/* ----------------------------------------- */
+@keyframes slideLR {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+    /* Returns to normal position */
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    margin-block: var(--gutter);
+    width: 100%;
+    max-width: 1400px;
+    background-size: 20%;
+  }
+
+  main {
+    background-size: 15%;
+  }
+
+  .logo-video,
+  .content {
+    flex: 1;
+  }
+}

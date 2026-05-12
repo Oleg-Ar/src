@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Portfolio | Digital Designer</title>
+		<meta name="description" content="Explore a collection of graphic design projects including branding, typography, posters, digital illustrations, and creative portfolio work.">
+
+		<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+		<link rel="icon" type="image/x-icon" href="assets/favicon/favicon.ico">
+		<link rel="manifest" href="assets/favicon/site.webmanifest">
+
+		<link href="css/reset.css" rel="stylesheet">
+		<link href="css/tokens.css" rel="stylesheet">
+		<link href="css/base.css" rel="stylesheet">
+		<link href="css/pages/portfolio.css" rel="stylesheet">
+		<link href="css/navbar.css" rel="stylesheet">
+		<link href="css/footer.css" rel="stylesheet">
+	</head>
+
+	<body>
+		<!-- Scroll progress bar -->
+		<div class="scroll-watcher" id="scrollBar"></div>
+
+		<div id="header"></div>
+		<main>
+			<h1 class="page-title">Portfolio</h1>
+
+			<div class="gallery-list" id="gallery"></div>
+
+			<div id="lightbox" class="">
+				<img id="lightbox-img" src="#" alt="">
+			</div>
+		</main>
+
+		<div id="footer"></div>
+		<script>
+			const bar = document.getElementById("scrollBar");
+			let ticking = false;
+			
+			window.addEventListener("scroll", () => {
+				if (!ticking) {
+					window.requestAnimationFrame(() => {
+						const scrollTop = window.scrollY;
+						const height = document.documentElement.scrollHeight - window.innerHeight;
+						const progress = scrollTop / height;
+						
+						bar.style.transform = `scaleX(${progress})`;
+						ticking = false;
+						});
+						ticking = true;
+					}
+					});
+		</script>
+		
+		<script type="module" src="js/navbar.js"></script>
+		<script type="module" src="js/pages/portfolio.js"></script>
+		<script type="module" src="js/app.js"></script>
+	</body>
+</html>

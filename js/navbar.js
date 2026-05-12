@@ -34,7 +34,7 @@ function setActiveNavLink() {
 
 // Load header async then init navbar
 async function loadHeader() {
-  const resp = await fetch('/partials/header.html');
+  const resp = await fetch('partials/header.html');
   const text = await resp.text();
   const headerContainer = document.getElementById('header');
 

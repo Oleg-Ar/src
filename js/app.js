@@ -29,8 +29,8 @@ async function loadHTML(id, url) {
 async function init() {
   // 1. Load partials first
   await Promise.all([
-    loadHTML('header', './partials/header.html'),
-    loadHTML('footer', './partials/footer.html')
+    loadHTML('header', 'partials/header.html'),
+    loadHTML('footer', 'partials/footer.html')
   ]);
 
   // 2. Only then touch the DOM

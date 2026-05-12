@@ -4,7 +4,7 @@
 
 @font-face {
   font-family: 'Playfair Display Variable';
-  src: url('/assets/fonts/PlayfairDisplay-Variable.woff2') format('woff2');
+  src: url('../assets/fonts/PlayfairDisplay-Variable.woff2') format('woff2');
   font-weight: 400 900;
   font-style: normal;
   font-display: swap;
@@ -12,7 +12,7 @@
 
 @font-face {
   font-family: 'Nunito Sans Variable';
-  src: url('/assets/fonts/NunitoSans-Variable.woff2') format('woff2');
+  src: url('../assets/fonts/NunitoSans-Variable.woff2') format('woff2');
   font-weight: 200 1000;
   font-stretch: 75% 125%;
   font-style: normal;

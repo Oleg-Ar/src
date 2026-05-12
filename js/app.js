@@ -74,7 +74,7 @@ async function init() {
   // 2. Init navbar after header is injected
   initNavbar();
   setActiveNavLink();
-
+  document.body.style.visibility = 'visible';
   // 3. Only then touch the DOM
   const loader = document.getElementById('page-loader');
   const content = document.querySelector('.content');

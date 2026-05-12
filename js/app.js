@@ -74,7 +74,9 @@ async function init() {
   // 2. Init navbar after header is injected
   initNavbar();
   setActiveNavLink();
+
   document.body.style.visibility = 'visible';
+  
   // 3. Only then touch the DOM
   const loader = document.getElementById('page-loader');
   const content = document.querySelector('.content');
@@ -86,6 +88,7 @@ async function init() {
     content?.classList.add('animate');
     videoWrapper?.classList.add('animate');
     main?.classList.add('animate');
+    
 
     if (bgVideo instanceof HTMLVideoElement) {
       bgVideo.play().catch((err) => {
@@ -110,5 +113,6 @@ async function init() {
     }
   }
 }
-
 document.addEventListener('DOMContentLoaded', init);
+
+

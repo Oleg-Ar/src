@@ -76,13 +76,13 @@ async function init() {
 
   document.body.style.visibility = 'visible';
 
- setTimeout(() => {
-   const input = document.querySelector('[autofocus]');
+  setTimeout(() => {
+    const input = document.querySelector('[autofocus]');
 
-   if (input instanceof HTMLElement) {
-     input.focus();
-   }
- }, 100);
+    if (input instanceof HTMLElement) {
+      input.focus();
+    }
+  }, 100);
 
   // 3. Only then touch the DOM
   const loader = document.getElementById('page-loader');
